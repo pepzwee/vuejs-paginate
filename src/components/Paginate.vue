@@ -7,7 +7,7 @@
     <ul class="pagination-list">
       <li v-for="page in pages" :class="[pageClass, page.selected ? activeClass : '', page.disabled ? disabledClass : '', page.breakView ? breakViewClass: '']">
         <span v-if="page.breakView" :class="breakViewLinkClass" tabindex="0"><slot name="breakViewContent">{{ breakViewText }}</slot></span>
-        <a v-else-if="page.disabled" :class="pageLinkClass" tabindex="0">{{ page.content }}</a>
+        <a v-else-if="page.disabled" :class="[pageLinkClass, page.selected ? activeClass : '']" tabindex="0">{{ page.content }}</a>
         <a v-else @click="handlePageSelected(page.index + 1)" @keyup.enter="handlePageSelected(page.index + 1)" :class="pageLinkClass" tabindex="0">{{ page.content }}</a>
       </li>
     </ul>
