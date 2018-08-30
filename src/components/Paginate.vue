@@ -80,7 +80,7 @@ export default {
     },
     activeClass: {
       type: String,
-      default: 'active'
+      default: 'is-current'
     },
     disabledClass: {
       type: String,
