@@ -6,7 +6,7 @@
     <a v-if="firstLastButton" @click="selectLastPage()" @keyup.enter="selectLastPage()" :class="[pageLinkClass, lastPageSelected() ? disabledClass : '']" tabindex="0" v-html="lastButtonText"></a>
     <ul class="pagination-list">
       <li v-for="page in pages" :class="[pageClass, page.selected ? activeClass : '', page.disabled ? disabledClass : '', page.breakView ? breakViewClass: '']">
-        <span v-if="page.breakView" :class="[pageLinkClass, breakViewLinkClass]" tabindex="0"><slot name="breakViewContent">{{ breakViewText }}</slot></span>
+        <span v-if="page.breakView" :class="breakViewLinkClass" tabindex="0"><slot name="breakViewContent">{{ breakViewText }}</slot></span>
         <a v-else-if="page.disabled" :class="pageLinkClass" tabindex="0">{{ page.content }}</a>
         <a v-else @click="handlePageSelected(page.index + 1)" @keyup.enter="handlePageSelected(page.index + 1)" :class="pageLinkClass" tabindex="0">{{ page.content }}</a>
       </li>
@@ -72,11 +72,11 @@ export default {
       default: 'pagination-next'
     },
     breakViewClass: {
-      type: String,
-      default: 'pagination-ellipsis'
+      type: String
     },
     breakViewLinkClass: {
-      type: String
+      type: String,
+      default: 'pagination-ellipsis'
     },
     activeClass: {
       type: String,
